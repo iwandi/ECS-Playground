@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECS-Playground", "ECS-Playground\ECS-Playground.csproj", "{FF9603E4-D69F-44DF-89A1-A97235B5572B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF9603E4-D69F-44DF-89A1-A97235B5572B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF9603E4-D69F-44DF-89A1-A97235B5572B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF9603E4-D69F-44DF-89A1-A97235B5572B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF9603E4-D69F-44DF-89A1-A97235B5572B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6679300B-B196-46A9-8CD5-6C78A2AE25B1}
+	EndGlobalSection
+EndGlobal
