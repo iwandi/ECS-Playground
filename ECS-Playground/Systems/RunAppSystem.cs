@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECS_Playground
 {
-    public interface IRunApp
+    public interface IRunApp : ISystem
     {
         void Run();
     }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ECS_Playground
-{
+{   
     public class TypeInstanceRegestry<TBase>
     {
         readonly Type tBase = typeof(TBase);
@@ -38,11 +38,14 @@ namespace ECS_Playground
 
         public void RegsiterType(Type t)
         {
-            foreach (Type subType in GetSubTypes(t))
+            foreach (Type subType in ListSubTypes(t))
             {
                 TypeEntry entry = GetEntry(subType);
-                entry.AddType(t);
-                System.Diagnostics.Debug.WriteLine("AddType {0} : {1}", t.Name, subType.Name);
+                if (!t.IsInterface)
+                {
+                    entry.AddType(t);
+                    System.Diagnostics.Debug.WriteLine("AddType {0} : {1}", t.Name, subType.Name);
+                }
             }
         }
 
@@ -50,7 +53,7 @@ namespace ECS_Playground
         {
             Type t = obj.GetType();
 
-            foreach(Type subType in GetSubTypes(t))
+            foreach(Type subType in ListSubTypes(t))
             {
                 TypeEntry entry = GetEntry(subType);
                 entry.AddInstance(obj, overrideExistring);
@@ -62,11 +65,23 @@ namespace ECS_Playground
             return t.FindInterfaces(TypeFilter, tBase);
         }
 
-        bool TypeFilter(Type m, object filterCriteria)
+        IEnumerable<Type> ListSubTypes(Type t)
         {
-            //return m.Equals(tBase);
-            // TODO : check if we need to filter something 
-            return true;
+            while (t != null && tBase.IsAssignableFrom(t))
+            {
+                yield return t;
+                Type[] interfaces = t.FindInterfaces(TypeFilter, tBase);
+                foreach (Type tI in interfaces)
+                {
+                    yield return tI;
+                }
+                t = t.BaseType;
+            }
+        }
+
+        bool TypeFilter(Type t, object filterCriteria)
+        {
+            return tBase.IsAssignableFrom(t);
         }
 
         public void UnRegisterInstance(object obj)
